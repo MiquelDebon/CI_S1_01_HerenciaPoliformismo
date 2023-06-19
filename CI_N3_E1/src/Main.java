@@ -5,17 +5,13 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Editor> listEditor = new ArrayList<Editor>();
-    static final String STRING_AN_ERROR_HAS_OCCUR = "❌️ An error has occurred";
     static final String STRING_WRITE_VALID_VALUE = "❌ Select a valid value/option ✏️: ";
+    static final String STRING_THERE_ARE_NO_WRITER = "⚠️ There are no Writter ";
+    static final String STRING_THERE_ARE_NO_NEWS = "⚠️ There are no NEWs ";
 
 
     public static void main(String[] args) {
         boolean exit = false;
-
-        BasquetNew basquetNew1 = new BasquetNew("Titol", "  ", "Madrid");
-
-        System.out.println(basquetNew1.getPrice());
-
 
         do{
             switch (menu()){
@@ -47,22 +43,20 @@ public class Main {
 
         }while(!exit);
         System.out.println("Bye!!");
-
     }
 
 
-    static public int menu(){
-        int option = -1;
+    static private int menu(){
         System.out.println( "--------------------------------MENU------------------------------------\n" +
                             "   1.Introduir Redactor                5.Mostrar noticies per redacor   \n" +
                             "   2.Eliminar Redactor                 6.Mostrar totes les noticies\n" +
                             "   3.Introduir noticia a Redactor      7.Calcular preu-noticia\n" +
                             "   4.Eliminar noticia(Redacor + titula) ");
         System.out.print("Chose your option ✏️: ");
-        return option = inputReturnIntWhileBetweenRange(0,7);
+        return inputReturnIntWhileBetweenRange(0,7);
     }
 
-    static public void introduirRedactor(){
+    static private void introduirRedactor(){
         String dni = "";
         String name = "";
 
@@ -76,7 +70,7 @@ public class Main {
         System.out.println("Lisa de redactors nº" + listEditor.size() );
     }
 
-    static public void deleteRedactor(){
+    static private void deleteRedactor(){
         String dni = "";
         int index;
         boolean hayRedactor = listEditor.size() > 0;
@@ -91,12 +85,12 @@ public class Main {
             }while(!rightDNI);
             listEditor.remove(index);
         }else{
-            System.out.println("There are no Writter");
+            System.out.println(STRING_THERE_ARE_NO_WRITER);
         }
     }
 
 
-    static void introducirNoticiaRedactor(){
+    static private void introducirNoticiaRedactor(){
         String dni = "";
         Editor editor = null;
         int index;
@@ -113,11 +107,11 @@ public class Main {
             editor = listEditor.get(index);
             editor.setAddNews( createNew());
         }else{
-            System.out.println("There are no Writter");
+            System.out.println(STRING_THERE_ARE_NO_WRITER);
         }
     }
 
-    static void deleteNewByEditor(){
+    static private void deleteNewByEditor(){
         Editor editor = null;
         String dni = "";
         int index;
@@ -147,14 +141,14 @@ public class Main {
                 }while(!rightTitle);
                 editor.deleteNew(indexNew);
             }else{
-                System.out.println("This Editor does not have news");
+                System.out.println(STRING_THERE_ARE_NO_NEWS);
             }
         }else{
-            System.out.println("There are no Writter");
+            System.out.println(STRING_THERE_ARE_NO_WRITER);
         }
     }
 
-    static void showNewByEditor(){
+    static private void showNewByEditor(){
         Editor editor = null;
         String dni = "";
         int index;
@@ -174,14 +168,14 @@ public class Main {
             if(hayNews){
                 System.out.println(editor.getNews());
             }else{
-                System.out.println("This Editor does not have news");
+                System.out.println(STRING_THERE_ARE_NO_NEWS);
             }
         }else{
-            System.out.println("There are no Writter");
+            System.out.println(STRING_THERE_ARE_NO_WRITER);
         }
     }
 
-    static New createNew(){
+    static private New createNew(){
         int option  = -1;
         String title;
         String competition;
@@ -235,22 +229,31 @@ public class Main {
         return freshNew;
     }
 
-    static void showAllNews(){
+    static private void showAllNews(){
         Editor edit = null;
         New freshnew  = null;
 
-        System.out.println("Show all news");
-        for(int i=0; i<listEditor.size(); i++){
-            edit = listEditor.get(i);
-            for(int j=0; j<edit.getNews().size(); j++){
-                freshnew = edit.getNews().get(j);
-                System.out.println(freshnew);
+        if(listEditor.size()==0){
+            System.out.println(STRING_THERE_ARE_NO_NEWS);
+        }else{
+            int unidades = 0;
+            for(int i=0; i<listEditor.size(); i++){
+                edit = listEditor.get(i);
+                for(int j=0; j<edit.getNews().size(); j++){
+                    unidades++;
+                    freshnew = edit.getNews().get(j);
+                    System.out.println(freshnew);
+                }
+            }
+            if(unidades == 0){
+                System.out.println(STRING_THERE_ARE_NO_NEWS);
             }
         }
 
+
     }
 
-    static void calculatePriceNew(){
+    static private void calculatePriceNew(){
         Editor editor = null;
         String dni = "";
         int index;
@@ -283,16 +286,16 @@ public class Main {
                 System.out.println("The actual price is " + price);
                 System.out.println("The actual punctuation is " + punctuation);
             }else{
-                System.out.println("This Editor does not have news");
+                System.out.println(STRING_THERE_ARE_NO_NEWS);
             }
         }else{
-            System.out.println("There are no Writter");
+            System.out.println(STRING_THERE_ARE_NO_WRITER);
         }
     }
 
 
 
-    static int findRedactorByDNI(String dni){
+    static private int findRedactorByDNI(String dni){
         int index = -1;
         for(int i=0; i<listEditor.size(); i++){
             if(listEditor.get(i).getDNI().equalsIgnoreCase(dni)){
@@ -303,7 +306,7 @@ public class Main {
         return index;
     }
 
-    static int findNewByEditor(Editor editor, String title){
+    static private int findNewByEditor(Editor editor, String title){
         int index = -1;
         for(int i = 0; i<editor.getNews().size(); i++){
             String news = editor.getNews().get(i).getTitle();
@@ -316,7 +319,7 @@ public class Main {
     }
 
 
-    public static int inputReturnIntWhileBetweenRange(int valorInferiorInclos , int valorSuperiorInclos) {
+    private static int inputReturnIntWhileBetweenRange(int valorInferiorInclos , int valorSuperiorInclos) {
         int numero = 0;
         boolean correcto = false;
 
