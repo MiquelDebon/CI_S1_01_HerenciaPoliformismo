@@ -15,7 +15,7 @@ public class Percussio extends Instrument{
     }
 
     static {
-        System.out.println("Static block: Clase de Percussió (1 cop ha de apareixe)");
+        System.out.println("Static block: Clase de Percussió (1 cop ha de apareixer)");
     }
 
 }

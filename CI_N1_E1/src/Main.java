@@ -1,7 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        Percussio percussio = new Percussio("Tambo 2", 35);
+        //Objectes instanciats normal per constuctor
+        Percussio percussio = new Percussio("Tambo 2", 35); //Static block included
         Vent ventIntrument = new Vent("Flauta", 32);
         Corda cordaInstrument = new Corda("Guitara", 100);
 
@@ -9,7 +10,7 @@ public class Main {
         System.out.println(ventIntrument.tocar());
         System.out.println(cordaInstrument.tocar());
 
-        Vent.metodeStatic();
+        Vent.metodeStatic();  //Objecte instancidada via metode static
 
     }
 }
