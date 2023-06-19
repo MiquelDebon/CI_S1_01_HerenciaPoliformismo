@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        //Metode frenar - Sense instanciar un Ctoxe puc inicialitzar el metode
+        //Metode frenar - Sense instanciar un Cotxe puc inicialitzar el metode
         Cotxe.frenar();
 
         //Metode accelear - Requereix instanciar un objecte de la clase Cotxe

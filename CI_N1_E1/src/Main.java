@@ -9,7 +9,7 @@ public class Main {
         System.out.println(ventIntrument.tocar());
         System.out.println(cordaInstrument.tocar());
 
-        //Vent.metodeStatic();
+        Vent.metodeStatic();
 
     }
 }

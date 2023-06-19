@@ -10,13 +10,12 @@ public class Percussio extends Instrument{
         return "Està sonant un instrument de percussió";
     }
 
-    /*
     {
-        System.out.println("    Intsace block: (Multiple times appears)");
+        System.out.println("    Instance block: (Multiple times appears)\n");
     }
 
     static {
         System.out.println("Static block: Clase de Percussió (1 cop ha de apareixe)");
     }
-     */
+
 }

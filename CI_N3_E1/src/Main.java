@@ -6,7 +6,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Editor> listEditor = new ArrayList<Editor>();
     static final String STRING_WRITE_VALID_VALUE = "❌ Select a valid value/option ✏️: ";
-    static final String STRING_THERE_ARE_NO_WRITER = "⚠️ There are no Writter ";
+    static final String STRING_THERE_ARE_NO_WRITER = "⚠️ There are no Writers ";
     static final String STRING_THERE_ARE_NO_NEWS = "⚠️ There are no NEWs ";
 
 

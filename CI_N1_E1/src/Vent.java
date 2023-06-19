@@ -8,9 +8,8 @@ public class Vent extends Instrument{
         return "Està sonant un instrument de vent";
     }
 
-    /*
     public static void metodeStatic(){
         System.out.println("Static bloc: La classe Percussió s'ha inicialitzat/carregat!");
     }
-     */
+
 }
